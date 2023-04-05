@@ -3,8 +3,6 @@ from requests_aws4auth import AWS4Auth
 import boto3
 import requests
 import json
-import os
-
 
 
 def lambda_handler(event, context):
@@ -59,7 +57,7 @@ def lambda_handler(event, context):
     }
 
     # OpenSearch Service domain
-    opensearch_domain = os.environ['OPENSEARCH_DOMAIN']
+    opensearch_domain = 'https://search-photos-cf-3soyc72dt3hse2iqtmm3ldgf6q.us-east-1.es.amazonaws.com'
     region = 'us-east-1'
     
     session = boto3.Session()
@@ -88,7 +86,7 @@ def lambda_handler(event, context):
         
         url = boto3.client('s3').generate_presigned_url(
         ClientMethod='get_object', 
-        Params={'Bucket': 'b2-image-store', 'Key': hit["_source"]["objectKey"]},
+        Params={'Bucket': 'b2-image-store-cf', 'Key': hit["_source"]["objectKey"]},
         ExpiresIn=3600)
         
         hit["signed_url"] = url

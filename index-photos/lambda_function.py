@@ -4,7 +4,6 @@ from boto3 import client, Session
 from opensearchpy import OpenSearch, RequestsHttpConnection
 from requests_aws4auth import AWS4Auth
 from datetime import datetime
-import os
 
 from botocore.credentials import AssumeRoleCredentialFetcher, DeferredRefreshableCredentials
 from botocore.session import Session
@@ -18,7 +17,7 @@ def lambda_handler(event, context):
 
     bucket = event['Records'][0]['s3']['bucket']['name']
     if not bucket:
-        bucket = os.environ['PHOTO_S3_BUCKET']  # Use environment variable
+        bucket = "b2-image-store-cf" 
     key = event['Records'][0]['s3']['object']['key']
 
     #key = key.replace("+", " ")
@@ -64,7 +63,7 @@ def lambda_handler(event, context):
 
 def store_opensearch(key, bucket, labels):
     # OpenSearch Service domain
-    opensearch_domain = os.environ['OPENSEARCH_DOMAIN']
+    opensearch_domain = 'https://search-photos-cf-3soyc72dt3hse2iqtmm3ldgf6q.us-east-1.es.amazonaws.com'
 
     region = 'us-east-1'
     
