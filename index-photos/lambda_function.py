@@ -19,6 +19,7 @@ def lambda_handler(event, context):
     if not bucket:
         bucket = "b2-image-store-cf" 
     key = event['Records'][0]['s3']['object']['key']
+    print("Bucket: " + bucket)
 
     #key = key.replace("+", " ")
 
