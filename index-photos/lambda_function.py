@@ -64,7 +64,7 @@ def lambda_handler(event, context):
 
 def store_opensearch(key, bucket, labels):
     # OpenSearch Service domain
-    opensearch_domain = 'https://search-photos-cf-3soyc72dt3hse2iqtmm3ldgf6q.us-east-1.es.amazonaws.com'
+    opensearch_domain = 'https://search-photos-cf-2-efqs2sx2tdlysrwaygoztmmn4m.us-east-1.es.amazonaws.com'
 
     region = 'us-east-1'
     
