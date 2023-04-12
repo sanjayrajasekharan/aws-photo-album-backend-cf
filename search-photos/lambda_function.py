@@ -71,7 +71,7 @@ def lambda_handler(event, context):
     )
 
     # Construct the URL for the _search endpoint
-    url = f"{opensearch_domain}/photos/_search"
+    url = f"{opensearch_domain}/photos-cf/_search"
 
     # Send the GET request
     response = requests.get(url, auth=aws_auth, json=search_body)
