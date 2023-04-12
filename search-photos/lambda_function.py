@@ -6,6 +6,8 @@ import json
 
 
 def lambda_handler(event, context):
+
+    print("Demo")
     
     print("Received event: " + str(event))
 
