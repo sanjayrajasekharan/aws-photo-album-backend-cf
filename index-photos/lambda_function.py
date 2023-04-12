@@ -97,4 +97,4 @@ def store_opensearch(key, bucket, labels):
     print(document)
 
     # Indexing the document
-    response = openSearch.index(index='photos', body=document)
+    response = openSearch.index(index='photos-cf', body=document)
